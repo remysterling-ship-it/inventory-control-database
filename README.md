@@ -33,6 +33,19 @@ psql -d inventory_lab -f 01_schema.sql
 psql -d inventory_lab -f 02_queries.sql
 ```
 
+## Node.js / Express integration
+
+The `backend/` directory contains an Express API that connects to PostgreSQL with the `pg` driver. It exposes health, inventory, reorder, and stock-movement endpoints.
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm start
+```
+
+See [`backend/README.md`](backend/README.md) for the API contract and example `curl` request.
+
 ## Design notes
 
 Inventory is calculated from stock movement transactions, while `warehouse_stock` stores the operational reorder threshold and current quantity for fast checks. A transaction records one item movement at one warehouse. The sample trigger updates warehouse quantity whenever a transaction is inserted and rejects movements that would create negative stock.
