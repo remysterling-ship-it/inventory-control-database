@@ -31,6 +31,7 @@ The scripts target PostgreSQL:
 createdb inventory_lab
 psql -d inventory_lab -f 01_schema.sql
 psql -d inventory_lab -f 02_queries.sql
+psql -d inventory_lab -f 03_procedures_triggers.sql
 ```
 
 ## Node.js / Express integration
@@ -45,6 +46,10 @@ npm start
 ```
 
 See [`backend/README.md`](backend/README.md) for the API contract and example `curl` request.
+
+## Procedures and triggers
+
+[`03_procedures_triggers.sql`](03_procedures_triggers.sql) adds reusable PostgreSQL routines for recording inventory movements, generating reorder requests, and receiving deliveries. It also adds stock-enforcement and audit triggers plus the `inventory_reorder_status` reporting view.
 
 ## Design notes
 
